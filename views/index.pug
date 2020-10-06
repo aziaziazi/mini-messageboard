@@ -2,4 +2,15 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  h2 new message
+    form(method='POST', action="/new")
+      input(placeholder='your name', name='author')
+      input(placeholder='message', name='message')
+      input(type='submit')
+  h2 precedent messages
+  ul
+    each message in messages
+      li
+        p= message.message
+        i= message.author
+        pre= message.date.toDateString()
